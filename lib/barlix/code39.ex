@@ -14,7 +14,7 @@ defmodule Barlix.Code39 do
 
   * `:checksum` (boolean) - enables checksum. Defaults to `false`
   """
-  @spec encode(String.t | charlist, Keyword.t) :: {:error, binary} | {:ok, Barlix.code}
+  @spec encode(String.t | char_list, Keyword.t) :: {:error, binary} | {:ok, Barlix.code}
   def encode(value, options \\ []) do
     Utils.normalize_string(value)
     |> loop(Keyword.get(options, :checksum, false))
@@ -24,7 +24,7 @@ defmodule Barlix.Code39 do
   Accepts the same arguments as `encode/2`. Returns `t:Barlix.code/0` or
   raises `Barlix.Error` in case of invalid value.
   """
-  @spec encode!(String.t | charlist, Keyword.t) :: Barlix.code | no_return
+  @spec encode!(String.t | char_list, Keyword.t) :: Barlix.code | no_return
   def encode!(value, options \\ []) do
     case encode(value, options) do
       {:ok, code} -> code

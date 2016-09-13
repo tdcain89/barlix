@@ -9,7 +9,7 @@ defmodule Barlix.Code93 do
   @doc """
   Encodes the given value using code 93 symbology.
   """
-  @spec encode(String.t | charlist) :: {:error, binary} | {:ok, Barlix.code}
+  @spec encode(String.t | char_list) :: {:error, binary} | {:ok, Barlix.code}
   def encode(value) do
     normalize_string(value)
     |> Enum.flat_map(&ascii_to_43/1)
@@ -20,7 +20,7 @@ defmodule Barlix.Code93 do
   Accepts the same arguments as `encode/1`. Returns `t:Barlix.code/0` or
   raises `Barlix.Error` in case of invalid value.
   """
-  @spec encode!(String.t | charlist) :: Barlix.code | no_return
+  @spec encode!(String.t | char_list) :: Barlix.code | no_return
   def encode!(value) do
     case encode(value) do
       {:ok, code} -> code
